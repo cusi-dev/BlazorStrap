@@ -28,7 +28,7 @@ namespace BlazorStrap
         private EditContext MyEditContext { get; set; }
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            if(Model == null)
+            if(Model == null && EditContext == null)
             {
                 Form = Formbuilder =>
                 {
@@ -48,15 +48,25 @@ namespace BlazorStrap
             }
             Form = Formbuilder =>
             {
-                Formbuilder.OpenComponent<EditForm>(0);
-                Formbuilder.AddMultipleAttributes(1, AdditionalAttributes);
-                Formbuilder.AddAttribute(2, "class", classname);
-                Formbuilder.AddAttribute(3, "Model", Model);
-                Formbuilder.AddAttribute(4, "EditContext", EditContext);
-                Formbuilder.AddAttribute(5, "OnSubmit", OnSubmit);
-                Formbuilder.AddAttribute(6, "OnValidSubmit", OnValidSubmit);
-                Formbuilder.AddAttribute(7, "OnInvalidSubmit", OnInvalidSubmit);
-                Formbuilder.AddAttribute(8, "ChildContent", ChildContent);
+                int sequence = -1;
+
+                Formbuilder.OpenComponent<EditForm>(sequence++);
+                Formbuilder.AddMultipleAttributes(sequence++, AdditionalAttributes);
+                Formbuilder.AddAttribute(sequence++, "class", classname);
+
+                if (EditContext == null)
+                {
+                    Formbuilder.AddAttribute(sequence++, "Model", Model);
+                }
+                else
+                {
+                    Formbuilder.AddAttribute(sequence++, "EditContext", EditContext);
+                }
+
+                Formbuilder.AddAttribute(sequence++, "OnSubmit", OnSubmit);
+                Formbuilder.AddAttribute(sequence++, "OnValidSubmit", OnValidSubmit);
+                Formbuilder.AddAttribute(sequence++, "OnInvalidSubmit", OnInvalidSubmit);
+                Formbuilder.AddAttribute(sequence++, "ChildContent", ChildContent);
                 Formbuilder.CloseComponent();
             };
 

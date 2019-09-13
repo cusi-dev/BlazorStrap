@@ -7,7 +7,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <PackageId>BlazorStrap</PackageId>
-    <Version>1.0.0-preview9-03</Version>
+    <Version>1.0.0-custom-01</Version>
     <Authors>Chanan Braunstein; John Bomhold</Authors>
     <Title>Blazor BootStrap</Title>
     <Description>A bootstrap4 component library for Blazor</Description>
@@ -15,6 +15,8 @@
     <PackageTags>blazor;bootstrap;bootstrap4</PackageTags>
     <RepositoryUrl>https://github.com/chanan/BlazorStrap</RepositoryUrl>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
